@@ -1,6 +1,6 @@
 ## D1 Tutors Script
 
-This script was developed for the purpose of streamlining the administrative processes associated with running a
+This script was developed for the purpose of streamlining administrative processes associated with running a
 tutoring business. The script allows the user to manage clients, log sessions, get invoices, and keep track of finances.
 
 *Feel free to take this code as a blueprint and adapt it to your own business administration*
