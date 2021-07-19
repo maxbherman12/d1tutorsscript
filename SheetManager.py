@@ -1,5 +1,6 @@
 import gspread
 import datetime
+import math
 
 
 class SheetManager:
@@ -27,7 +28,9 @@ class SheetManager:
         while not rate.isnumeric or int(rate) < 0:
             print("Rate must be a positive integer")
             rate = input("Rate: ").strip()
-        row.append(int(rate) * float(hours))
+
+        value = math.ceil(int(rate) * float(hours))
+        row.append("$" + str(value))
 
         print(row)
         check_submit = input("Are you sure you want to enter this record? (y or n): ").strip().lower()
@@ -163,7 +166,11 @@ class SheetManager:
     def __sum_payments_in_list(_list):
         amount = 0
         for row in _list:
-            amount += int((row['Amount'][1:]))
+            str_without_dollar_sign = row['Amount']
+            if str_without_dollar_sign[0].isnumeric():
+                str_without_dollar_sign = str_without_dollar_sign[1:]
+
+            amount += int(str_without_dollar_sign)
 
         return amount
 
@@ -172,7 +179,7 @@ class SheetManager:
         amount = 0
         for row in _list:
             if str(row['Duration (hr)']).isnumeric():
-                amount += int((row['Duration (hr)']))
+                amount += int(row['Duration (hr)'])
 
         return amount
 
