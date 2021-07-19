@@ -167,7 +167,7 @@ class SheetManager:
         amount = 0
         for row in _list:
             str_without_dollar_sign = row['Amount']
-            if str_without_dollar_sign[0].isnumeric():
+            if not str_without_dollar_sign[0].isnumeric():
                 str_without_dollar_sign = str_without_dollar_sign[1:]
 
             amount += int(str_without_dollar_sign)
